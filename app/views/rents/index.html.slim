@@ -1,0 +1,17 @@
+h1 予約ルーム一覧
+
+.mb-3
+table.table.table-hover
+  thead.thead-default
+    tr
+      th= Hotelapp.human_attribute_name(:name)
+      th= Hotelapp.human_attribute_name(:intro)
+      th= Hotelapp.human_attribute_name(:price)
+      th= Hotelapp.human_attribute_name(:address)
+  tbody
+    - @hotelapps.each do |hotelapp|
+      tr
+        td= link_to hotelapp.name, show_rent_path(@rent)
+        td= hotelapp.intro
+        td= hotelapp.price
+        td= hotelapp.address

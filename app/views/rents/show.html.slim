@@ -1,0 +1,22 @@
+h1 Hotelapp詳細
+
+.nav.justify-content-end
+  =link_to '一覧', rents_path, class: 'nav-link'
+
+table.table.table-hover
+  tbody
+    tr
+      th= Hotelapp.human_attribute_name(:id)
+      td= @hotelapp.id
+    tr
+      th= Hotelapp.human_attribute_name(:name)
+      td= @hotelapp.name
+    tr
+      th= Hotelapp.human_attribute_name(:intro)
+      td= @hotelapp.intro
+    tr
+      th= Hotelapp.human_attribute_name(:price)
+      td= @hotelapp.price
+    tr
+      th= Hotelapp.human_attribute_name(:address)
+      td= @hotelapp.address

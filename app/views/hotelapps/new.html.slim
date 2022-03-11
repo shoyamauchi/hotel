@@ -1,0 +1,19 @@
+h1 ルームの新規登録
+.nav.justify-content-end
+  =link_to '一覧', hotelapps_path, class: 'nav-link'
+
+= form_with model: @hotelapp, local: true do |f|
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control', id: 'hotelapp_name'
+  .form-group
+    = f.label :intro
+    = f.text_field :intro, class: 'form-control', id: 'hotelapp_intro'
+  .form-group
+    = f.label :price
+    = f.text_field :price, class: 'form-control', id: 'hotelapp_price'
+  .form-group
+    = f.label :address
+    = f.text_field :address, class: 'form-control', id: 'hotelapp_address'
+
+  = f.submit nil, class: 'btn btn-primary'
