@@ -39,7 +39,7 @@ class RentsController < ApplicationController
 
   private
     def rent_params
-      params.require(:rent).permit(:start, :end, :number).merge(user_id: current_user.id)
+      params.require(:rent).permit(:start, :end, :number, :hotelapp_id).merge(user_id: current_user.id)
     end
 
 end
