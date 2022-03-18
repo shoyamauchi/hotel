@@ -6,12 +6,20 @@ table.table.table-hover
     tr
       th= Hotelapp.human_attribute_name(:name)
       th= Hotelapp.human_attribute_name(:intro)
-      th= Hotelapp.human_attribute_name(:price)
       th= Hotelapp.human_attribute_name(:address)
+      th= Rent.human_attribute_name(:number)
+      th= Rent.human_attribute_name(:total_price)
+      th= Rent.human_attribute_name(:start)
+      th= Rent.human_attribute_name(:end)
   tbody
-    - @hotelapps.each do |hotelapp|
+    - @rents.each do |rent|
       tr
-        td= link_to hotelapp.name, show_rent_path(@rent)
-        td= hotelapp.intro
-        td= hotelapp.price
-        td= hotelapp.address
+        td= link_to rent.hotelapp.name, rent_path(rent)
+        td= rent.hotelapp.intro
+        td= rent.hotelapp.address
+        td= rent.number
+        td= rent.hotelapp.price * rent.number * (rent.end - rent.start).to_i
+        / 日数差、to_iで分子の形
+        td= rent.start
+        td= rent.end
+

@@ -20,6 +20,11 @@ ja:
         updated_at: 更新日時
         mail: メール
         pass: パスワード
+      rent:
+        total_price: 合計料金
+        start: 開始日
+        end: 終了日
+        number: 人数
   date:
     abbr_day_names:
     - 日

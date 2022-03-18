@@ -1,6 +1,20 @@
 class HotelappsController < ApplicationController
+  before_action :search
+
+  def search
+    @search = Hotelapp.ransack(params[:q])
+    @hotelapps = @search.result
+    @q = Hotelapp.ransack(params[:q]) # params[:q]のqには検索フォームに入力した値が入る
+    @hotelapps = @q.result(distinct: true) 
+  end
+
   def top #ルーム一覧
-    @hotelapps = Hotelapp.all
+    # 検索オブジェクト
+    @search = Hotelapp.ransack(params[:q])
+    # 検索結果
+    @hotelapps = @search.result
+    @hotelapps = @q.result(distinct: true) # distinct: trueは重複したデータを除外
+    # @hotelapps = Hotelapp.all
   end
 
   def index #myルーム一覧
@@ -12,7 +26,7 @@ class HotelappsController < ApplicationController
   end
 
   def new
-    @hotelapps = Hotelapp.new
+    @hotelapp = Hotelapp.new
   end
 
   def create
@@ -37,7 +51,10 @@ class HotelappsController < ApplicationController
     redirect_to hotelapps_url, notice: "ホテル「#{hotelapp.name}」を削除しました。"
   end
 
+  private
+
   def hotelapp_params
-    params.require(:hotelapp).permit(:id, :name, :intro, :price, :address)
+    params.require(:hotelapp).permit(:id, :name, :intro, :price, :address).merge(user_id: current_user.id)
   end
+
 end

@@ -1,17 +1,19 @@
 class RentsController < ApplicationController
 
   def index
-    @hotelapps = Hotelapp.all
-    @rents = Rent.all
+    @rents = current_user.rents
   end
 
   def show #ルーム詳細
-    @hotelapp = Hotelapp.find_by(id: params[:id])
+    @rent = Rent.find(params[:id])
+    @hotelapp = Hotelapp.find_by(id: params[:hotelapp_id])
+    @hotelapp = Hotelapp.find_by(params[:room_name])
   end
 
   def new
     @rent = Rent.new
-    @hotelapp = Hotelapp.find_by(id: params[:id])
+    @hotelapp = Hotelapp.find(params[:hotelapp_id])
+    @rent.hotelapp_id = @hotelapp.id #(hotelapp_params[:hotelapp]) 
   end
 
   #def confirm #予約確認
@@ -20,8 +22,11 @@ class RentsController < ApplicationController
   #end
 
   def create
+    binding.pry
     @rent = Rent.new(rent_params)
-    
+    @hotelapp = Hotelapp.find_by(params[:hotelapp_id])
+    @rent.hotelapp_id = @hotelapp.id
+    binding.pry
     if @rent.save
       redirect_to @rent, notice: "予約を完了しました。"
     else
@@ -32,11 +37,9 @@ class RentsController < ApplicationController
     #end
   end
 
-  def rent_params
-    params.require(:rent).permit(:start, :end, :number, :hotelapp_id)
-  end
+  private
+    def rent_params
+      params.require(:rent).permit(:start, :end, :number).merge(user_id: current_user.id)
+    end
 
-  def hotelapp_params
-    params.require(:rent).permit(hotelapp:[:id, :name, :intro, :price, :address])
-  end
 end

@@ -61,3 +61,9 @@ gem 'bootstrap' # bootstrapの導入
 gem 'devise' # ログイン機能の導入
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+gem 'pry-rails'
+gem 'mini_magick' # 画像をリサイズ
+gem 'image_processing' # 画像をリサイズ
+gem 'ransack' # 検索機能
+gem 'pry-byebug', group: :development
+gem 'pry-nav'

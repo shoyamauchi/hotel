@@ -1,0 +1,12 @@
+- if user_signed_in?
+    h4= current_user.name
+    ul
+      li= link_to '部屋を探す', top_hotelapp_path
+      li= link_to 'myルーム一覧', hotelapps_path
+      li= link_to '予約ルーム一覧', rents_path
+      li= link_to '設定', show_user_path
+      li= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header-nav"
+- else
+  ul
+    li= link_to "ログイン", new_user_session_path, class: "header-nav"
+    li= link_to "新規登録", new_user_registration_path, class: "header-nav"

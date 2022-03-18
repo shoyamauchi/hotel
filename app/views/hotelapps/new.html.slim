@@ -4,16 +4,16 @@ h1 ルームの新規登録
 
 = form_with model: @hotelapp, local: true do |f|
   .form-group
-    = f.label :name
+    = f.label :room名
     = f.text_field :name, class: 'form-control', id: 'hotelapp_name'
   .form-group
-    = f.label :intro
+    = f.label :紹介
     = f.text_field :intro, class: 'form-control', id: 'hotelapp_intro'
   .form-group
-    = f.label :price
+    = f.label :料金
     = f.text_field :price, class: 'form-control', id: 'hotelapp_price'
   .form-group
-    = f.label :address
+    = f.label :住所
     = f.text_field :address, class: 'form-control', id: 'hotelapp_address'
 
   = f.submit nil, class: 'btn btn-primary'
