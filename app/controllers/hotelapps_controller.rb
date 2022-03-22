@@ -1,5 +1,6 @@
 class HotelappsController < ApplicationController
   before_action :search
+  before_action :authenticate_user!, except: [:top, :search, :show]
 
   def search
     @search = Hotelapp.ransack(params[:q])
@@ -54,7 +55,6 @@ class HotelappsController < ApplicationController
   private
 
   def hotelapp_params
-    params.require(:hotelapp).permit(:id, :name, :intro, :price, :address).merge(user_id: current_user.id)
+    params.require(:hotelapp).permit(:id, :name, :intro, :price, :address,).merge(user_id: current_user.id)
   end
-
 end

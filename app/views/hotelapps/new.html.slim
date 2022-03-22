@@ -15,5 +15,9 @@ h1 ルームの新規登録
   .form-group
     = f.label :住所
     = f.text_field :address, class: 'form-control', id: 'hotelapp_address'
+  .form-group
+    = f.label :room画像
+    = f.file_field :room_image, id: 'hotelapp_room_image' 
 
   = f.submit nil, class: 'btn btn-primary'
+  

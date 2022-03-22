@@ -22,8 +22,8 @@ ja:
         pass: パスワード
       rent:
         total_price: 合計料金
-        start: 開始日
-        end: 終了日
+        start_date: 開始日
+        end_date: 終了日
         number: 人数
   date:
     abbr_day_names:

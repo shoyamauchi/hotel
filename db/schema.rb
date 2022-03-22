@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_15_134232) do
+ActiveRecord::Schema.define(version: 2022_03_20_090300) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,8 +52,8 @@ ActiveRecord::Schema.define(version: 2022_03_15_134232) do
   end
 
   create_table "rents", force: :cascade do |t|
-    t.date "start", null: false
-    t.date "end", null: false
+    t.date "start_date", null: false
+    t.date "end_date", null: false
     t.integer "number", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -79,4 +79,5 @@ ActiveRecord::Schema.define(version: 2022_03_15_134232) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "hotelapps", "users"
 end

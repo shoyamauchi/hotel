@@ -1,15 +1,24 @@
 h1 Hotelappトップ
 h2 Potepan Shareでまだ体験したことのない旅をしよう
 
-検索機能
+ul.list-unstyled.list-group.list-group-horizontal 
+  li.list-group-item
+    = search_form_for @q, class: 'mb-5', url: search_hotelapps_path do |f|
+      .form-group
+        = f.label :address_cont, 'エリア検索', class: 'col-form-label'
+        .col-sm-10
+          = f.search_field :address_cont
+      .form-group
+        = f.submit class: 'btn btn-outline-primary'
 
-= search_form_for @q, class: 'mb-5', url: search_hotelapps_path do |f|
-  .form-group.row
-    = f.label :address_cont, 'エリア', class: 'col-sm-2 col-form-label'
-    .col-sm-10
-      = f.search_field :address_cont
-  .form-group
-    = f.submit class: 'btn btn-outline-primary'
+  li.list-group-item
+    = search_form_for @q, class: 'mb-5', url: search_hotelapps_path do |f|
+      .form-group
+        = f.label :name_or_intro_cont, 'フリーワード検索', class: 'col-form-label'
+        .col-sm-10
+          = f.search_field :name_or_intro_cont
+      .form-group
+      = f.submit class: 'btn btn-outline-primary'
 
 .mb-3
 table.table.table-hover

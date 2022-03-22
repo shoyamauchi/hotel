@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+
   # ログイン後のリダイレクト先
   def after_sign_in_path_for(resource)
     user_path(resource)
@@ -14,5 +15,7 @@ class ApplicationController < ActionController::Base
     # アカウント編集の時にnameとprofileのストロングパラメータを追加
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :profile])
     devise_parameter_sanitizer.permit(:account_update, keys: %i(avatar))
+    devise_parameter_sanitizer.permit(:account_update, keys: %i(avatar))
   end
+  
 end

@@ -9,8 +9,8 @@ table.table.table-hover
       th= Hotelapp.human_attribute_name(:address)
       th= Rent.human_attribute_name(:number)
       th= Rent.human_attribute_name(:total_price)
-      th= Rent.human_attribute_name(:start)
-      th= Rent.human_attribute_name(:end)
+      th= Rent.human_attribute_name(:start_date)
+      th= Rent.human_attribute_name(:end_date)
   tbody
     - @rents.each do |rent|
       tr
@@ -18,8 +18,8 @@ table.table.table-hover
         td= rent.hotelapp.intro
         td= rent.hotelapp.address
         td= rent.number
-        td= rent.hotelapp.price * rent.number * (rent.end - rent.start).to_i
+        td= rent.hotelapp.price * rent.number * (rent.end_date - rent.start_date).to_i
         / 日数差、to_iで分子の形
-        td= rent.start
-        td= rent.end
+        td= rent.start_date
+        td= rent.end_date
 
