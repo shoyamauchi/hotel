@@ -1,0 +1,22 @@
+h1 予約画面
+
+- if @rent.errors.present?
+  ul#error_explanation
+    - @rent.errors.full_messages.each do |message|
+      li= message
+
+= form_with model: @rent, local: true do |f| #url: confirm_new_rent_path do |f|
+  .form-group
+    = f.label :開始日
+    = f.date_field :start_date, class: 'form-control', id: 'rent_start'
+  .form-group
+    = f.label :終了日
+    = f.date_field :end_date, class: 'form-control', id: 'rent_end'
+  .form-group
+    = f.label :人数
+    = f.number_field :number, class: 'form-control', id: 'rent_number'
+  .form-group
+    = f.hidden_field :hotelapp_id, id: 'hotelapp_id'
+
+  = f.submit '予約する', class: 'btn btn-primary'
+  

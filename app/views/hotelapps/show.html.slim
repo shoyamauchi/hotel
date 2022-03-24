@@ -1,0 +1,34 @@
+h1 myルーム詳細
+
+.nav.justify-content-end
+  =link_to '一覧', hotelapps_path, class: 'nav-link'
+
+- if @hotelapps.room_image.attached?
+  = image_tag @hotelapps.room_image.variant(resize:'200x200').processed 
+end
+
+table.table.table-hover
+  tbody
+    tr
+      th= Hotelapp.human_attribute_name(:id)
+      td= @hotelapps.id
+    tr
+      th= Hotelapp.human_attribute_name(:name)
+      td= @hotelapps.name
+    tr
+      th= Hotelapp.human_attribute_name(:intro)
+      td= @hotelapps.intro
+    tr
+      th= Hotelapp.human_attribute_name(:price)
+      td= @hotelapps.price
+    tr
+      th= Hotelapp.human_attribute_name(:address)
+      td= @hotelapps.address
+  
+=link_to '予約する', new_hotelapp_rent_path(@hotelapps), class: 'btn btn-primary mr-3'
+
+- if user_signed_in?
+  -if current_user.id == @hotelapps.user_id
+    =link_to '編集', edit_hotelapp_path, class: 'btn btn-primary mr-3'
+    =link_to '削除', @hotelapp, method: :delete, data: { confirm: "ホテル「#{@hotelapps.name}」を削除します。よろしいですか？"}, class: 'btn btn-danger'
+//link_to, new_hotelapp_rent_path(@hotelapps)でidを通ったパスが受けられる

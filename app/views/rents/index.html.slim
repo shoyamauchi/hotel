@@ -1,0 +1,25 @@
+h1 予約ルーム一覧
+
+.mb-3
+table.table.table-hover
+  thead.thead-default
+    tr
+      th= Hotelapp.human_attribute_name(:name)
+      th= Hotelapp.human_attribute_name(:intro)
+      th= Hotelapp.human_attribute_name(:address)
+      th= Rent.human_attribute_name(:number)
+      th= Rent.human_attribute_name(:total_price)
+      th= Rent.human_attribute_name(:start_date)
+      th= Rent.human_attribute_name(:end_date)
+  tbody
+    - @rents.each do |rent|
+      tr
+        td= link_to rent.hotelapp.name, rent_path(rent)
+        td= rent.hotelapp.intro
+        td= rent.hotelapp.address
+        td= rent.number
+        td= rent.hotelapp.price * rent.number * (rent.end_date - rent.start_date).to_i
+        / 日数差、to_iで分子の形
+        td= rent.start_date
+        td= rent.end_date
+

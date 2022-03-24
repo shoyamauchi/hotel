@@ -1,0 +1,15 @@
+h1 #{current_user.name} のユーザーページ
+
+- if @user.avatar.attached?
+  = image_tag @user.avatar.variant(resize:'100x100').processed 
+end
+
+h3 ユーザー名
+= current_user.name
+h3 メールアドレス
+= @user.email
+h3 プロフィール
+- unless @user.profile == nil
+  = @user.profile
+
+=link_to 'プロフィール編集', edit_user_registration_path, class: 'nav-link'

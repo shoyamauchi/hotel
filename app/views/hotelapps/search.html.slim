@@ -1,0 +1,21 @@
+
+- if @hotelapps.present?
+  .mb-3
+  table.table.table-hover
+    thead.thead-default
+      tr
+        th= Hotelapp.human_attribute_name(:name)
+        th= Hotelapp.human_attribute_name(:intro)
+        th= Hotelapp.human_attribute_name(:price)
+        th= Hotelapp.human_attribute_name(:address)
+    tbody
+      - @hotelapps.each do |hotelapp|
+        tr
+          td= link_to hotelapp.name, hotelapp
+          td= hotelapp.intro
+          td= hotelapp.price
+          td= hotelapp.address
+  
+- else
+  p 検索結果はありません
+  
