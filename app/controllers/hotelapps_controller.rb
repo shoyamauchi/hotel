@@ -55,6 +55,6 @@ class HotelappsController < ApplicationController
   private
 
   def hotelapp_params
-    params.require(:hotelapp).permit(:id, :name, :intro, :price, :address,).merge(user_id: current_user.id)
+    params.require(:hotelapp).permit(:id, :name, :intro, :price, :address, :room_image, :avatar).merge(user_id: current_user.id)
   end
 end
